@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Bank UI</title>
+
+   
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <div class="bank-card">
+
+        <h2>My Bank</h2>
+
+        <hr>
+
+        <div class="balance-box">
+            <p>Current Balance</p>
+            <h1>₹ <span id="balance">100000</span></h1>
+        </div>
+
+        <input type="text" id="amount" placeholder="Enter amount">
+
+        <button class="deposit" onclick="deposit()">Deposit</button>
+        <button class="withdraw" onclick="withdraw()">Withdraw</button>
+
+        <h3 class="uid">UID: 24bcc70031</h3>
+
+    </div>
+
+    <!-- JavaScript -->
+    <script>
+        let balance = 100000;
+
+        function deposit() {
+            let amount = document.getElementById("amount").value;
+            amount = Number(amount);
+
+            if (amount <= 0) {
+                alert("Please enter a valid amount");
+                return;
+            }
+
+            balance = balance + amount;
+            document.getElementById("balance").innerText = balance;
+            document.getElementById("amount").value = "";
+        }
+
+        function withdraw() {
+            let amount = document.getElementById("amount").value;
+            amount = Number(amount);
+
+            if (amount <= 0) {
+                alert("Please enter a valid amount");
+                return;
+            }
+
+            if (amount > balance) {
+                alert("Insufficient balance");
+                return;
+            }
+
+            balance = balance - amount;
+            document.getElementById("balance").innerText = balance;
+            document.getElementById("amount").value = "";
+        }
+    </script>
+
+</body>
+</html>
